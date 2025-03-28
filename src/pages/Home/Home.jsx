@@ -21,7 +21,7 @@ const Home = () => {
     <div className="home-container">
       <div className="header">
         <button className="botao-voltar" onClick={voltarInicio}>
-          ← Voltar
+          <span className="botao-voltar-icon">←</span> Voltar
         </button>
         <h1>Roleta de Reflexões</h1>
       </div>
