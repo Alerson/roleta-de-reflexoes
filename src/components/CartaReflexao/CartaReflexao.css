@@ -1,9 +1,9 @@
 .carta-reflexao {
   width: 100%;
-  max-width: 28rem;
+  max-width: 90%;
   background-color: white;
   border-radius: 0.75rem;
-  padding: 1.5rem;
+  padding: 1rem;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
   border: 2px solid #d8b4fe;
   position: relative;
@@ -26,10 +26,10 @@
 
 .carta-reflexao h2 {
   position: relative;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: #7e22ce;
   font-weight: 700;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   text-align: center;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   animation: tituloEntrada 1s ease-out 0.3s both;
@@ -37,8 +37,8 @@
 
 .carta-reflexao p {
   position: relative;
-  font-size: 1.25rem;
-  line-height: 1.6;
+  font-size: 1.1rem;
+  line-height: 1.5;
   text-align: center;
   color: #4b5563;
   animation: textoEntrada 1s ease-out 0.5s both;
@@ -79,13 +79,28 @@
 /* Media queries para tablets e desktops */
 @media (min-width: 768px) {
   .carta-reflexao {
-    max-width: 32rem;
+    max-width: 85%;
+    padding: 1.5rem;
+  }
+  
+  .carta-reflexao h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .carta-reflexao p {
+    font-size: 1.3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .carta-reflexao {
+    max-width: 80%;
     padding: 2rem;
   }
   
   .carta-reflexao h2 {
-    font-size: 1.75rem;
-    margin-bottom: 2rem;
+    font-size: 1.7rem;
   }
   
   .carta-reflexao p {
@@ -93,18 +108,20 @@
   }
 }
 
-@media (min-width: 1024px) {
+/* Para dispositivos muito pequenos */
+@media (max-width: 350px) {
   .carta-reflexao {
-    max-width: 36rem;
-    padding: 2.5rem;
+    padding: 0.8rem;
   }
   
   .carta-reflexao h2 {
-    font-size: 2rem;
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
   }
   
   .carta-reflexao p {
-    font-size: 1.75rem;
+    font-size: 1rem;
+    line-height: 1.4;
   }
 }
 

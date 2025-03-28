@@ -31,7 +31,7 @@ const Tutorial = ({ onComplete }) => {
     },
     {
       title: "Gire a Roleta",
-      description: "Toque no botão ou agite seu dispositivo para girar a roleta e receber uma pergunta aleatória.",
+      description: "Toque no botão para girar a roleta e receber uma pergunta aleatória.",
       action: "Deslize para continuar →",
       position: "middle",
       highlight: "roleta-container",
@@ -42,13 +42,6 @@ const Tutorial = ({ onComplete }) => {
       action: "Deslize para continuar →",
       position: "bottom",
       highlight: "carta-reflexao",
-    },
-    {
-      title: "Conquistas e Favoritos",
-      description: "Salve suas perguntas favoritas e ganhe conquistas enquanto usa o app.",
-      action: "Deslize para continuar →",
-      position: "bottom-right",
-      highlight: "botao-conquistas",
     },
     {
       title: "Pronto para Começar!",
