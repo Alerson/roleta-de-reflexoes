@@ -1,0 +1,44 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 1rem;
+    background: linear-gradient(to bottom, #ddd6fe, #e9d5ff);
+  }
+  
+  .header {
+    display: flex;
+    width: 100%;
+    max-width: 800px;
+    align-items: center;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+  
+  .botao-voltar {
+    position: absolute;
+    left: 0;
+    padding: 0.5rem 1rem;
+    background: white;
+    color: #7e22ce;
+    border: 2px solid #7e22ce;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .botao-voltar:hover {
+    background-color: #7e22ce;
+    color: white;
+  }
+  
+  .home-container h1 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #7e22ce;
+    margin: 0 auto;
+    text-align: center;
+  }

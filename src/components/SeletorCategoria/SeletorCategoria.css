@@ -1,0 +1,26 @@
+.seletor-categoria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .categoria-botao {
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  
+  .categoria-botao:not(.ativo) {
+    background-color: #e9d5ff;
+    color: #7e22ce;
+  }
+  
+  .categoria-botao.ativo {
+    background-color: #9333ea;
+    color: white;
+  }

@@ -1,0 +1,144 @@
+.carta-reflexao {
+    width: 100%;
+    max-width: 28rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 2px solid #d8b4fe;
+    position: relative;
+    overflow: hidden;
+    transform-origin: center;
+    animation: cartaEntrada 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  .carta-reflexao::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.3) 0%, transparent 80%);
+    z-index: 0;
+  }
+  
+  .carta-reflexao h2 {
+    position: relative;
+    font-size: 1.5rem;
+    color: #7e22ce;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    animation: tituloEntrada 1s ease-out 0.3s both;
+  }
+  
+  .carta-reflexao p {
+    position: relative;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    text-align: center;
+    color: #4b5563;
+    animation: textoEntrada 1s ease-out 0.5s both;
+  }
+  
+  .carta-reflexao::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #9333ea, #db2777);
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: linhaEntrada 1s ease-out 0.7s forwards;
+  }
+  
+  /* Animações */
+  @keyframes cartaEntrada {
+    0% {
+      opacity: 0;
+      transform: scale(0.7) translateY(30px);
+    }
+    50% {
+      opacity: 1;
+    }
+    70% {
+      transform: scale(1.05) translateY(-10px);
+    }
+    100% {
+      transform: scale(1) translateY(0);
+    }
+  }
+  
+  @keyframes tituloEntrada {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes textoEntrada {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes linhaEntrada {
+    0% {
+      transform: scaleX(0);
+    }
+    100% {
+      transform: scaleX(1);
+    }
+  }
+  
+  /* Efeito de brilho ao redor da carta */
+  .carta-container {
+    position: relative;
+    animation: pulse 3s infinite alternate;
+  }
+  
+  .brilho {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    border-radius: 1rem;
+    z-index: -1;
+    background: radial-gradient(circle at center, rgba(147, 51, 234, 0.3) 0%, transparent 70%);
+    opacity: 0;
+    animation: brilhoPulse 3s infinite alternate;
+  }
+  
+  @keyframes brilhoPulse {
+    0% {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    100% {
+      opacity: 0.7;
+      transform: scale(1.05);
+    }
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-5px);
+    }
+  }

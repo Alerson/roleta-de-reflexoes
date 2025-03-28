@@ -1,0 +1,328 @@
+.inicio-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .inicio-content {
+    max-width: 800px;
+    width: 100%;
+    background-color: white;
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    box-shadow: 0 15px 30px rgba(125, 55, 200, 0.15);
+    position: relative;
+    z-index: 10;
+    animation: fadeSlideUp 0.8s ease-out;
+  }
+  
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .logo-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(to right, #9333ea, #db2777);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 16px rgba(125, 55, 200, 0.3);
+    animation: rotateSlow 20s linear infinite;
+  }
+  
+  .logo-inner {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: counterRotate 20s linear infinite;
+  }
+  
+  .logo-inner span {
+    font-weight: bold;
+    color: #7e22ce;
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  .inicio-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #7e22ce;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    animation: pulseText 3s infinite alternate;
+  }
+  
+  .inicio-description {
+    font-size: 1.2rem;
+    color: #4b5563;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
+  
+  .categorias-preview {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .categoria-item {
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(to right, #a855f7, #d8b4fe);
+    color: white;
+    font-weight: 600;
+    border-radius: 9999px;
+    box-shadow: 0 4px 8px rgba(125, 55, 200, 0.2);
+    transition: all 0.3s ease;
+    cursor: default;
+  }
+  
+  .categoria-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(125, 55, 200, 0.3);
+  }
+  
+  .como-jogar {
+    background-color: #f5f3ff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 2.5rem;
+    border-left: 4px solid #8b5cf6;
+  }
+  
+  .como-jogar h2 {
+    font-size: 1.5rem;
+    color: #7e22ce;
+    margin-bottom: 1rem;
+  }
+  
+  .como-jogar ol {
+    padding-left: 1.5rem;
+  }
+  
+  .como-jogar li {
+    margin-bottom: 0.75rem;
+    color: #4b5563;
+    font-size: 1.1rem;
+  }
+  
+  .botao-iniciar {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(to right, #9333ea, #db2777);
+    color: white;
+    font-weight: 700;
+    font-size: 1.25rem;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(125, 55, 200, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .botao-iniciar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(125, 55, 200, 0.4);
+  }
+  
+  .botao-iniciar:active {
+    transform: translateY(1px);
+  }
+  
+  .botao-iniciar::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+  }
+  
+  .botao-iniciar:hover::after {
+    animation: ripple 1s ease-out;
+  }
+  
+  /* Bolhas decorativas */
+  .decoracao-bolhas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .bolha {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.4;
+  }
+  
+  .bolha1 {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(to right, #9333ea, transparent);
+    top: -100px;
+    left: -100px;
+    animation: float 15s ease-in-out infinite;
+  }
+  
+  .bolha2 {
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(to left, #db2777, transparent);
+    bottom: -50px;
+    right: -50px;
+    animation: float 18s ease-in-out infinite reverse;
+  }
+  
+  .bolha3 {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(to bottom, #8b5cf6, transparent);
+    top: 60%;
+    left: 10%;
+    animation: float 12s ease-in-out infinite 2s;
+  }
+  
+  .bolha4 {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(to top, #d8b4fe, transparent);
+    top: 20%;
+    right: 10%;
+    animation: float 10s ease-in-out infinite 1s;
+  }
+  
+  /* Animações */
+  @keyframes fadeSlideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes rotateSlow {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes counterRotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
+  
+  @keyframes pulseText {
+    0% {
+      opacity: 0.9;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    100% {
+      opacity: 1;
+      text-shadow: 0 4px 8px rgba(125, 55, 200, 0.2);
+    }
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0) translateX(0);
+    }
+    50% {
+      transform: translateY(-20px) translateX(10px);
+    }
+    100% {
+      transform: translateY(0) translateX(0);
+    }
+  }
+  
+  @keyframes ripple {
+    0% {
+      transform: scale(0, 0);
+      opacity: 1;
+    }
+    20% {
+      transform: scale(25, 25);
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: scale(40, 40);
+    }
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .inicio-content {
+      padding: 1.5rem;
+    }
+    
+    .inicio-title {
+      font-size: 2rem;
+    }
+    
+    .inicio-description {
+      font-size: 1rem;
+    }
+    
+    .como-jogar li {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .categorias-preview {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .logo-circle {
+      width: 100px;
+      height: 100px;
+    }
+    
+    .logo-inner {
+      width: 75px;
+      height: 75px;
+    }
+  }
