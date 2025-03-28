@@ -26,19 +26,25 @@ const Home = () => {
         <h1>Roleta de Reflexões</h1>
       </div>
       
-      <SeletorCategoria />
-      
-      <Roleta girar={girar} angulo={angulo} />
-      
-      <Botao 
-        texto={girar ? 'Girando...' : 'Girar Roleta'} 
-        onClick={girarRoleta} 
-        disabled={girar} 
-      />
-      
-      {cartaSelecionada && (
-        <CartaReflexao mensagem={cartaSelecionada} />
-      )}
+      <div className={`jogo-area ${cartaSelecionada ? 'has-result' : ''}`}>
+        <div className="controles-area">
+          <SeletorCategoria />
+          
+          <Roleta girar={girar} angulo={angulo} />
+          
+          <Botao 
+            texto={girar ? 'Girando...' : 'Girar Roleta'} 
+            onClick={girarRoleta} 
+            disabled={girar} 
+          />
+        </div>
+        
+        {cartaSelecionada && (
+          <div className="resultado-area">
+            <CartaReflexao mensagem={cartaSelecionada} />
+          </div>
+        )}
+      </div>
     </div>
   );
 };

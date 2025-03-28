@@ -1,44 +1,78 @@
 .roleta-container {
-    position: relative;
-    width: 16rem;
-    height: 16rem;
-    margin-bottom: 2rem;
-  }
-  
-  .roleta {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: linear-gradient(to right, #8b5cf6, #ec4899);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .roleta-centro {
-    width: 75%;
-    height: 75%;
-    border-radius: 50%;
-    background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 1rem;
-  }
-  
-  .roleta-centro span {
-    color: #7e22ce;
-    font-weight: 500;
+  position: relative;
+  width: 16rem;
+  height: 16rem;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+}
+
+.roleta {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(to right, #8b5cf6, #ec4899);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.roleta-centro {
+  width: 75%;
+  height: 75%;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+.roleta-centro span {
+  color: #7e22ce;
+  font-weight: 500;
+}
+
+.indicador {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #fcd34d;
+}
+
+/* Media queries para tablets e desktops */
+@media (min-width: 768px) {
+  .roleta-container {
+    width: 24rem;
+    height: 24rem;
   }
   
   .indicador {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(45deg);
-    width: 1.5rem;
-    height: 1.5rem;
-    background-color: #fcd34d;
+    width: 2rem;
+    height: 2rem;
   }
+  
+  .roleta-centro span {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .roleta-container {
+    width: 30rem;
+    height: 30rem;
+  }
+  
+  .indicador {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  
+  .roleta-centro span {
+    font-size: 1.5rem;
+  }
+}
