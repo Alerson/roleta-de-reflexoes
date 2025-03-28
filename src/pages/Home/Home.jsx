@@ -34,11 +34,12 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      <div className="header">
+      <h1 className="app-title">Roleta de Reflexões</h1>
+      
+      <div className="nav-container">
         <button className="botao-voltar" onClick={voltarInicio}>
           <span className="botao-voltar-icon">←</span> Voltar
         </button>
-        <h1>Roleta de Reflexões</h1>
         
         {currentPlayer && (
           <div className="player-info">
