@@ -1,27 +1,27 @@
 {
-    "appId": "com.seudominio.roletadereflexoes",
-    "appName": "Roleta de Reflexões",
-    "webDir": "build",
-    "bundledWebRuntime": false,
-    "ios": {
-      "contentInset": "always",
+  "appId": "com.exemplo.roletadereflexoes",
+  "appName": "Roleta de Reflexões",
+  "webDir": "build",
+  "bundledWebRuntime": false,
+  "ios": {
+    "contentInset": "always",
+    "backgroundColor": "#f5f3ff",
+    "preferredStatusBarStyle": "darkContent",
+    "scheme": "App",
+    "cordovaSwiftVersion": "5.1"
+  },
+  "android": {
+    "backgroundColor": "#f5f3ff",
+    "allowMixedContent": true,
+    "captureInput": true,
+    "webContentsDebuggingEnabled": false
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2000,
       "backgroundColor": "#f5f3ff",
-      "preferredStatusBarStyle": "darkContent",
-      "scheme": "App",
-      "cordovaSwiftVersion": "5.1"
-    },
-    "android": {
-      "backgroundColor": "#f5f3ff",
-      "allowMixedContent": true,
-      "captureInput": true,
-      "webContentsDebuggingEnabled": false
-    },
-    "plugins": {
-      "SplashScreen": {
-        "launchShowDuration": 2000,
-        "backgroundColor": "#f5f3ff",
-        "androidSplashResourceName": "splash",
-        "androidScaleType": "CENTER_CROP"
-      }
+      "androidSplashResourceName": "splash",
+      "androidScaleType": "CENTER_CROP"
     }
   }
+}
