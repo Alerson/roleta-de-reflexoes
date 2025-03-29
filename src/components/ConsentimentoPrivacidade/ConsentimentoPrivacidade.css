@@ -1,0 +1,157 @@
+.consentimento-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.consentimento-card {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.4s ease-out;
+}
+
+.consentimento-card h2 {
+  font-size: 1.5rem;
+  color: #7e22ce;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.consentimento-content {
+  font-size: 0.95rem;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+.politica-detalhada {
+  border-left: 3px solid #ddd6fe;
+  padding-left: 0.75rem;
+  margin: 1rem 0;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.politica-detalhada h3 {
+  font-size: 1.1rem;
+  color: #7e22ce;
+  margin: 1rem 0 0.5rem 0;
+}
+
+.ver-mais-button, .ver-menos-button {
+  background: none;
+  border: none;
+  color: #7e22ce;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  display: block;
+  margin: 0.5rem 0;
+  text-align: center;
+  width: 100%;
+}
+
+.ver-mais-button:hover, .ver-menos-button:hover {
+  text-decoration: underline;
+}
+
+.consentimento-acoes {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.consentimento-button {
+  padding: 0.75rem 2rem;
+  background: linear-gradient(to right, #9333ea, #db2777);
+  color: white;
+  font-weight: 700;
+  border-radius: 9999px;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.consentimento-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.consentimento-footer {
+  font-size: 0.8rem;
+  color: #6b7280;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.politica-link-inline {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #7e22ce;
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.politica-link-inline:hover {
+  color: #9333ea;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .consentimento-card {
+    padding: 1.25rem;
+  }
+  
+  .consentimento-card h2 {
+    font-size: 1.3rem;
+  }
+  
+  .consentimento-content {
+    font-size: 0.9rem;
+  }
+  
+  .politica-detalhada h3 {
+    font-size: 1rem;
+  }
+  
+  .consentimento-button {
+    padding: 0.6rem 1.75rem;
+  }
+}

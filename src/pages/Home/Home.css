@@ -96,6 +96,7 @@
   width: 100%;
   max-width: 1200px;
   margin-top: 0;
+  flex-grow: 1;
 }
 
 .controles-area {
@@ -122,6 +123,108 @@
   font-size: 1rem;
 }
 
+/* Footer com política de privacidade */
+.footer {
+  width: 100%;
+  padding: 1rem 0;
+  text-align: center;
+  margin-top: auto;
+}
+
+.politica-link {
+  background: none;
+  border: none;
+  color: #7e22ce;
+  font-size: 0.8rem;
+  text-decoration: underline;
+  cursor: pointer;
+  opacity: 0.8;
+  padding: 0.5rem;
+}
+
+.politica-link:hover {
+  opacity: 1;
+}
+
+/* Modal de política de privacidade */
+.politica-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.politica-modal {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideUp 0.4s ease-out;
+}
+
+.fechar-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2rem;
+  height: 2rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #9333ea;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.fechar-modal:hover {
+  background-color: #f5f3ff;
+}
+
+.politica-modal h2 {
+  font-size: 1.5rem;
+  color: #7e22ce;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.politica-conteudo {
+  color: #4b5563;
+}
+
+.politica-conteudo h3 {
+  font-size: 1.1rem;
+  color: #7e22ce;
+  margin: 1.25rem 0 0.5rem 0;
+}
+
+.politica-conteudo p {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.politica-conteudo ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.politica-conteudo li {
+  margin-bottom: 0.3rem;
+}
+
 /* Animações */
 @keyframes fadeIn {
   from {
@@ -129,6 +232,17 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -180,6 +294,18 @@
   .resultado-area {
     flex: 1;
     margin-top: 0;
+  }
+  
+  .politica-link {
+    font-size: 0.9rem;
+  }
+  
+  .politica-modal h2 {
+    font-size: 1.7rem;
+  }
+  
+  .politica-conteudo h3 {
+    font-size: 1.3rem;
   }
 }
 
@@ -234,6 +360,24 @@
     padding: 0.6rem 1.5rem;
     font-size: 0.95rem;
   }
+  
+  .politica-link {
+    font-size: 0.75rem;
+  }
+  
+  .politica-modal {
+    padding: 1.25rem;
+  }
+  
+  .politica-modal h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .politica-conteudo h3 {
+    font-size: 1rem;
+    margin: 1rem 0 0.4rem 0;
+  }
 }
 
 /* Para ajustes específicos em dispositivos médios */
@@ -245,7 +389,7 @@
   .app-title {
     margin: 0.4rem 0 0.6rem 0;
   }
-  
+
   .nav-container {
     margin-bottom: 0.8rem;
   }
@@ -253,4 +397,26 @@
   .jogo-area.has-result {
     flex-direction: column;
   }
+  
+  .politica-modal {
+    padding: 1.25rem;
+    width: 95%;
+  }
+}
+
+/* Loading container */
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f3ff;
+  color: #7e22ce;
+  font-size: 1.2rem;
+  font-weight: 500;
+  z-index: 2000;
 }

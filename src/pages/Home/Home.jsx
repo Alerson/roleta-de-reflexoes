@@ -13,6 +13,7 @@ const Home = () => {
   const { cartaSelecionada } = useContext(MensagensContext);
   const navigate = useNavigate();
   const [currentPlayer, setCurrentPlayer] = useState(null);
+  const [mostrarPolitica, setMostrarPolitica] = useState(false);
 
   // Carregar dados do jogador
   useEffect(() => {
@@ -68,6 +69,67 @@ const Home = () => {
           </div>
         )}
       </div>
+      
+      <div className="footer">
+        <button 
+          className="politica-link"
+          onClick={() => setMostrarPolitica(true)}
+        >
+          Política de Privacidade
+        </button>
+      </div>
+      
+      {mostrarPolitica && (
+        <div className="politica-modal-overlay" onClick={() => setMostrarPolitica(false)}>
+          <div className="politica-modal" onClick={(e) => e.stopPropagation()}>
+            <button 
+              className="fechar-modal"
+              onClick={() => setMostrarPolitica(false)}
+            >
+              ×
+            </button>
+            
+            <h2>Política de Privacidade</h2>
+            
+            <div className="politica-conteudo">
+              <h3>Informações Coletadas</h3>
+              <p>
+                O aplicativo Roleta de Reflexões coleta e armazena localmente:
+                <ul>
+                  <li>Nome de usuário</li>
+                  <li>Avatar selecionado</li>
+                  <li>Preferências de categoria</li>
+                  <li>Histórico de uso do aplicativo</li>
+                </ul>
+              </p>
+              
+              <h3>Como Usamos Suas Informações</h3>
+              <p>
+                Utilizamos suas informações exclusivamente para personalizar sua experiência 
+                no aplicativo e lembrar suas preferências entre sessões.
+              </p>
+              
+              <h3>Armazenamento de Dados</h3>
+              <p>
+                Todas as informações são armazenadas localmente no seu dispositivo. 
+                Não enviamos nenhuma de suas informações para servidores externos.
+              </p>
+              
+              <h3>Seus Direitos</h3>
+              <p>
+                Você pode acessar, corrigir ou excluir seus dados a qualquer momento
+                nas configurações do aplicativo.
+              </p>
+              
+              <h3>Contato</h3>
+              <p>
+                Se você tiver dúvidas sobre esta Política de Privacidade, entre em contato 
+                pelo e-mail: [seu-email@exemplo.com]
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
