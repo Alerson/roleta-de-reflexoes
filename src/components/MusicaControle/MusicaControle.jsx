@@ -7,7 +7,16 @@ const MusicaControle = ({ musicaSrc = '/musicas/relaxing-background.mp3' }) => {
 
   // Inicializar o serviço de áudio
   useEffect(() => {
-    audioService.init(musicaSrc);
+    // Verificar estado atual em vez de reinicializar
+    if (!audioService.initialized) {
+      try {
+        audioService.init(musicaSrc);
+      } catch (error) {
+        console.error('Erro ao inicializar áudio:', error);
+      }
+    }
+    
+    // Sincronizar estado inicial
     setTocando(audioService.isPlaying());
     
     // Escutar mudanças de estado do áudio
@@ -26,14 +35,18 @@ const MusicaControle = ({ musicaSrc = '/musicas/relaxing-background.mp3' }) => {
 
   // Alternar entre tocar e pausar a música
   const toggleMusica = () => {
-    const novoEstado = audioService.toggle();
-    setTocando(novoEstado);
-    
-    // Disparar evento para outros componentes que possam estar escutando
-    const event = new CustomEvent('audioStateChange', { 
-      detail: { isPlaying: novoEstado } 
-    });
-    document.dispatchEvent(event);
+    try {
+      const novoEstado = audioService.toggle();
+      setTocando(novoEstado);
+      
+      // Disparar evento para outros componentes que possam estar escutando
+      const event = new CustomEvent('audioStateChange', { 
+        detail: { isPlaying: novoEstado } 
+      });
+      document.dispatchEvent(event);
+    } catch (error) {
+      console.error('Erro ao alternar música:', error);
+    }
   };
 
   return (

@@ -7,12 +7,21 @@ const Tutorial = ({ onComplete }) => {
 
   // Verificar se o tutorial deve ser mostrado
   useEffect(() => {
-    const showTutorial = localStorage.getItem('showTutorial');
-    if (showTutorial !== 'true') {
+    // Verificar localStorage apenas uma vez na montagem inicial
+    try {
+      const showTutorial = localStorage.getItem('showTutorial');
+      if (showTutorial === 'false') {
+        setVisible(false);
+        if (onComplete) onComplete();
+      }
+    } catch (error) {
+      console.error("Erro ao verificar estado do tutorial:", error);
+      // Em caso de erro, garantir que o tutorial não bloqueie a aplicação
       setVisible(false);
       if (onComplete) onComplete();
     }
-  }, [onComplete]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Dependência vazia para executar apenas uma vez
 
   // Etapas do tutorial
   const tutorialSteps = [
@@ -62,7 +71,11 @@ const Tutorial = ({ onComplete }) => {
 
   // Marcar tutorial como concluído
   const completeTutorial = () => {
-    localStorage.setItem('showTutorial', 'false');
+    try {
+      localStorage.setItem('showTutorial', 'false');
+    } catch (error) {
+      console.error("Erro ao salvar estado do tutorial:", error);
+    }
     setVisible(false);
     if (onComplete) onComplete();
   };

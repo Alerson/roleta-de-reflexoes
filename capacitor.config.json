@@ -8,13 +8,19 @@
     "backgroundColor": "#f5f3ff",
     "preferredStatusBarStyle": "darkContent",
     "scheme": "App",
-    "cordovaSwiftVersion": "5.1"
+    "cordovaSwiftVersion": "5.1",
+    "allowsBackgroundAudio": true,
+    "webviewApiBridge": true,
+    "webViewArgs": {
+      "mediaPlaybackRequiresUserAction": "NO",
+      "allowsInlineMediaPlayback": true
+    }
   },
   "android": {
     "backgroundColor": "#f5f3ff",
     "allowMixedContent": true,
     "captureInput": true,
-    "webContentsDebuggingEnabled": false
+    "webContentsDebuggingEnabled": true
   },
   "plugins": {
     "SplashScreen": {
@@ -22,6 +28,9 @@
       "backgroundColor": "#f5f3ff",
       "androidSplashResourceName": "splash",
       "androidScaleType": "CENTER_CROP"
+    },
+    "WebView": {
+      "allowBackgroundAudio": true
     }
   }
 }
