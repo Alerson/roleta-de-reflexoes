@@ -16,6 +16,10 @@ export const MensagensProvider = ({ children }) => {
     const indiceAleatorio = Math.floor(Math.random() * mensagens[categoriaAtual].length);
     setCartaSelecionada(mensagens[categoriaAtual][indiceAleatorio]);
   };
+  
+  const limparCartaSelecionada = () => {
+    setCartaSelecionada(null);
+  };
 
   return (
     <MensagensContext.Provider 
@@ -24,7 +28,8 @@ export const MensagensProvider = ({ children }) => {
         categoriaAtual, 
         cartaSelecionada, 
         selecionarCategoria, 
-        selecionarCartaAleatoria 
+        selecionarCartaAleatoria,
+        limparCartaSelecionada
       }}
     >
       {children}

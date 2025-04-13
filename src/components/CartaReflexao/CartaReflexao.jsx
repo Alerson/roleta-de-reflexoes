@@ -11,8 +11,11 @@ const CartaReflexao = ({ mensagem }) => {
       setIsVisible(true);
     }, 100);
     
+    // Log para debug
+    console.log('CartaReflexao recebeu mensagem:', mensagem);
+    
     return () => clearTimeout(timer);
-  }, []);
+  }, [mensagem]);
 
   return (
     <div className="carta-container">

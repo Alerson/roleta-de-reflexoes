@@ -4,32 +4,39 @@ import Roleta from '../../components/Roleta';
 import SeletorCategoria from '../../components/SeletorCategoria';
 import CartaReflexao from '../../components/CartaReflexao';
 import Botao from '../../components/Botao';
+import MusicaControle from '../../components/MusicaControle';
 import { useRoleta } from '../../hooks/useRoleta';
 import { MensagensContext } from '../../context/MensagensContext';
 import './Home.css';
 
 const Home = () => {
   const { girar, angulo, girarRoleta } = useRoleta();
-  const { cartaSelecionada } = useContext(MensagensContext);
+  const { cartaSelecionada, limparCartaSelecionada } = useContext(MensagensContext);
   const navigate = useNavigate();
   const [currentPlayer, setCurrentPlayer] = useState(null);
   const [mostrarPolitica, setMostrarPolitica] = useState(false);
 
-  // Carregar dados do jogador
+  // Carregar dados do jogador e limpar carta apenas na montagem inicial
   useEffect(() => {
     // Verificar se há um jogador atual
     const player = localStorage.getItem('currentPlayer');
     
     if (player) {
       setCurrentPlayer(JSON.parse(player));
+      // Limpar qualquer carta que possa estar selecionada de uma sessão anterior
+      // Apenas na montagem inicial do componente
+      limparCartaSelecionada();
     } else {
       // Redirecionar para a tela inicial se não tiver jogador
       navigate('/');
       return;
     }
+    // Remova limparCartaSelecionada das dependências para evitar re-execução
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigate]);
 
   const voltarInicio = () => {
+    limparCartaSelecionada();
     navigate('/');
   };
 
@@ -38,16 +45,23 @@ const Home = () => {
       <h1 className="app-title">Roleta de Reflexões</h1>
       
       <div className="nav-container">
-        <button className="botao-voltar" onClick={voltarInicio}>
-          <span className="botao-voltar-icon">←</span> Voltar
-        </button>
+        <div className="nav-left">
+          <button className="botao-voltar" onClick={voltarInicio}>
+            <span className="botao-voltar-icon">←</span> Voltar
+          </button>
+        </div>
         
-        {currentPlayer && (
-          <div className="player-info">
-            <div className={`avatar avatar-${currentPlayer.avatar || 1}`}></div>
-            <span className="player-name">{currentPlayer.name}</span>
-          </div>
-        )}
+        <div className="nav-right">
+          {/* Controle de música adicionado aqui */}
+          <MusicaControle />
+          
+          {currentPlayer && (
+            <div className="player-info">
+              <div className={`avatar avatar-${currentPlayer.avatar || 1}`}></div>
+              <span className="player-name">{currentPlayer.name}</span>
+            </div>
+          )}
+        </div>
       </div>
       
       <div className={`jogo-area ${cartaSelecionada ? 'has-result' : ''}`}>
@@ -100,6 +114,7 @@ const Home = () => {
                   <li>Avatar selecionado</li>
                   <li>Preferências de categoria</li>
                   <li>Histórico de uso do aplicativo</li>
+                  <li>Preferências de música (ativada/desativada)</li>
                 </ul>
               </p>
               

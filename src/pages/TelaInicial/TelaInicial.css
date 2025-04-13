@@ -10,6 +10,14 @@
   overflow: hidden;
 }
 
+/* Controle de música na tela inicial */
+.musica-controle-container {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 100;
+}
+
 /* Logo animado */
 .logo-container {
   display: flex;

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import MusicaControle from '../../components/MusicaControle';
 import './TelaInicial.css';
 
 const TelaInicial = () => {
@@ -132,6 +133,10 @@ const TelaInicial = () => {
 
   return (
     <div className="tela-inicial">
+      <div className="musica-controle-container">
+        <MusicaControle />
+      </div>
+      
       <div className={`logo-container ${animationComplete ? 'animation-complete' : ''}`}>
         <div className="logo-circle">
           <div className="logo-inner">

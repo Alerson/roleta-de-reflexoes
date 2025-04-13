@@ -4,18 +4,24 @@ import { MensagensProvider } from './context/MensagensContext';
 import Home from './pages/Home/Home';
 import TelaInicial from './pages/TelaInicial/TelaInicial';
 import ConsentimentoPrivacidade from './components/ConsentimentoPrivacidade/ConsentimentoPrivacidade';
+import audioService from './services/AudioService';
 import './styles/global.css';
 
 function App() {
   const [consentimentoRealizado, setConsentimentoRealizado] = useState(false);
   const [carregando, setCarregando] = useState(true);
 
-  // Verificar se o usuário já deu consentimento
+  // Verificar se o usuário já deu consentimento e inicializar serviços
   useEffect(() => {
+    // Verificar consentimento
     const privacyConsent = localStorage.getItem('privacyConsent');
     if (privacyConsent === 'true') {
       setConsentimentoRealizado(true);
     }
+    
+    // Inicializar serviço de áudio
+    audioService.init();
+    
     setCarregando(false);
   }, []);
 

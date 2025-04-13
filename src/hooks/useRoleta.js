@@ -18,6 +18,9 @@ export const useRoleta = () => {
         selecionarCartaAleatoria();
         setGirar(false);
       }, 3000);
+      
+      // Adicione um log para debug
+      console.log('Roleta girando, carta será selecionada em 3 segundos');
     }
   };
 

@@ -1,0 +1,105 @@
+.musica-controle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(to right, #9333ea, #db2777);
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .musica-controle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .musica-controle:active {
+    transform: scale(0.95);
+  }
+  
+  .musica-controle.tocando {
+    background: linear-gradient(to right, #9333ea, #8b5cf6);
+  }
+  
+  .musica-controle.pausado {
+    background: linear-gradient(to right, #9333ea, #db2777);
+    opacity: 0.85;
+  }
+  
+  .musica-icon {
+    font-size: 1.3rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .musica-icon.tocando {
+    animation: pulseIcon 2s infinite alternate;
+  }
+  
+  /* Ondas sonoras animadas quando a música está tocando */
+  .musica-controle.tocando::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    animation: soundWave 1.5s infinite;
+    opacity: 0;
+  }
+  
+  /* Animações */
+  @keyframes pulseIcon {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.15);
+    }
+  }
+  
+  @keyframes soundWave {
+    0% {
+      opacity: 0.6;
+      transform: translate(-50%, -50%) scale(0.6);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(1.5);
+    }
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .musica-controle {
+      width: 36px;
+      height: 36px;
+    }
+    
+    .musica-icon {
+      font-size: 1.1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .musica-controle {
+      width: 32px;
+      height: 32px;
+    }
+    
+    .musica-icon {
+      font-size: 1rem;
+    }
+  }

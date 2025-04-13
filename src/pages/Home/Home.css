@@ -31,6 +31,18 @@
   margin-bottom: 1rem;
 }
 
+/* Divisão esquerda e direita da navegação */
+.nav-left, .nav-right {
+  display: flex;
+  align-items: center;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
 /* Informações do jogador */
 .player-info {
   display: flex;
