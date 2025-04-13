@@ -173,7 +173,7 @@ const TelaInicial = () => {
           {savedPlayers.length > 0 && (
             <div className="saved-players">
               <div className="saved-players-header">
-                <p>Jogadores anteriores:</p>
+                <p className="saved-players-title">Jogadores anteriores:</p>
                 <button 
                   className="edit-players-button"
                   onClick={() => setEditandoJogadores(!editandoJogadores)}
