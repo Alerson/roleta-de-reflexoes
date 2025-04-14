@@ -55,6 +55,7 @@ const TelaInicial = () => {
     );
 
     let updatedPlayers = [...savedPlayers];
+    let isNewPlayer = false;
     
     if (existingPlayerIndex >= 0) {
       // Atualizar jogador existente
@@ -66,6 +67,7 @@ const TelaInicial = () => {
     } else {
       // Adicionar novo jogador
       updatedPlayers.push(player);
+      isNewPlayer = true;
     }
 
     // Salvar no localStorage
@@ -73,6 +75,11 @@ const TelaInicial = () => {
     
     // Salvar jogador atual
     localStorage.setItem('currentPlayer', JSON.stringify(player));
+    
+    // Para jogadores novos, garantir que o tutorial seja mostrado
+    if (isNewPlayer) {
+      localStorage.setItem('showTutorial', 'true');
+    }
 
     // Navegar para a tela do jogo
     navigate('/jogo');

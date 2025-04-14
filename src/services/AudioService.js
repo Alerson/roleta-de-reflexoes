@@ -37,6 +37,7 @@ class AudioService {
       // Verificar se o usuário tinha a música ativa anteriormente
       const musicaAtiva = localStorage.getItem('musicaAtiva') === 'true';
       this.musicaAtiva = musicaAtiva;
+      console.log('AudioService inicializado, música ativa:', musicaAtiva);
       
       // Marcar como inicializado
       this.initialized = true;
@@ -82,6 +83,8 @@ class AudioService {
           .then(() => {
             this.musicaAtiva = true;
             localStorage.setItem('musicaAtiva', 'true');
+            this._notifyStateChange(true);
+            console.log('Reprodução de áudio bem-sucedida');
           })
           .catch(error => {
             console.error("Erro ao reproduzir áudio:", error);
@@ -127,12 +130,15 @@ class AudioService {
           .then(() => {
             this.musicaAtiva = true;
             localStorage.setItem('musicaAtiva', 'true');
+            this._notifyStateChange(true);
+            console.log('Reprodução alternativa bem-sucedida');
           })
           .catch(e => console.error('Falha na segunda tentativa:', e));
       }
     } catch (error) {
       console.error("Erro na reprodução alternativa:", error);
       this.musicaAtiva = false;
+      this._notifyStateChange(false);
     }
   }
 
@@ -146,20 +152,25 @@ class AudioService {
     }
 
     this.playWithErrorHandling();
+    return true; // Indica tentativa de iniciar a reprodução
   }
 
   /**
    * Pausa o áudio com tratamento de erros
    */
   pause() {
-    if (!this.audio) return;
+    if (!this.audio) return false;
     
     try {
       this.audio.pause();
       this.musicaAtiva = false;
       localStorage.setItem('musicaAtiva', 'false');
+      this._notifyStateChange(false);
+      console.log('Áudio pausado com sucesso');
+      return true; // Sucesso ao pausar
     } catch (error) {
       console.error("Erro ao pausar áudio:", error);
+      return false; // Falha ao pausar
     }
   }
 
@@ -168,11 +179,16 @@ class AudioService {
    * @returns {boolean} - O novo estado (true = tocando, false = pausado)
    */
   toggle() {
-    if (this.musicaAtiva) {
-      this.pause();
-    } else {
-      this.play();
-    }
+    console.log('Solicitação de toggle, estado atual:', this.musicaAtiva);
+    const result = this.musicaAtiva ? this.pause() : this.play();
+    
+    // Para play(), result será true indicando tentativa iniciada
+    // Para pause(), result será true se pausou com sucesso, false se falhou
+    
+    // Quando pausamos, o estado já foi atualizado em pause()
+    // Quando tocamos, a atualização acontece na promise em playWithErrorHandling()
+    
+    // Retorna o novo estado esperado
     return this.musicaAtiva;
   }
 
@@ -199,7 +215,33 @@ class AudioService {
    * @returns {boolean} - true se a música estiver tocando, false caso contrário
    */
   isPlaying() {
+    // Além de verificar o estado interno, verificamos também o estado real do elemento de áudio
+    if (this.audio) {
+      try {
+        // Combinamos o estado armazenado com o estado real do elemento
+        return this.musicaAtiva || (!this.audio.paused && !this.audio.ended);
+      } catch (error) {
+        console.error("Erro ao verificar estado de reprodução:", error);
+      }
+    }
     return this.musicaAtiva;
+  }
+
+  /**
+   * Notifica outros componentes sobre mudanças no estado do áudio
+   * @private
+   * @param {boolean} isPlaying - O novo estado de reprodução
+   */
+  _notifyStateChange(isPlaying) {
+    try {
+      const event = new CustomEvent('audioStateChange', { 
+        detail: { isPlaying: isPlaying } 
+      });
+      document.dispatchEvent(event);
+      console.log('Evento audioStateChange disparado:', isPlaying);
+    } catch (error) {
+      console.error("Erro ao notificar mudança de estado:", error);
+    }
   }
 
   /**
