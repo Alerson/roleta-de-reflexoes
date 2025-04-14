@@ -5,7 +5,7 @@ import './MusicaControle.css';
 const MusicaControle = ({ musicaSrc = '/musicas/relaxing-background.mp3' }) => {
   const [tocando, setTocando] = useState(false);
 
-  // Inicializar o serviço de áudio
+  // Inicializar o serviço de áudio e sincronizar estado
   useEffect(() => {
     // Verificar estado atual em vez de reinicializar
     if (!audioService.initialized) {
@@ -16,12 +16,15 @@ const MusicaControle = ({ musicaSrc = '/musicas/relaxing-background.mp3' }) => {
       }
     }
     
-    // Sincronizar estado inicial
-    setTocando(audioService.isPlaying());
+    // Importante: Sincronizar estado inicial com o serviço
+    const estadoInicial = audioService.isPlaying();
+    setTocando(estadoInicial);
+    console.log('Estado inicial do áudio:', estadoInicial);
     
     // Escutar mudanças de estado do áudio
     const handleAudioChange = (event) => {
       if (event.detail && typeof event.detail.isPlaying === 'boolean') {
+        console.log('Evento de mudança de áudio recebido:', event.detail.isPlaying);
         setTocando(event.detail.isPlaying);
       }
     };
@@ -37,7 +40,11 @@ const MusicaControle = ({ musicaSrc = '/musicas/relaxing-background.mp3' }) => {
   const toggleMusica = () => {
     try {
       const novoEstado = audioService.toggle();
+      console.log('Toggle de música: novo estado =', novoEstado);
       setTocando(novoEstado);
+      
+      // Armazenar estado no localStorage para persistência
+      localStorage.setItem('musicaAtiva', novoEstado.toString());
       
       // Disparar evento para outros componentes que possam estar escutando
       const event = new CustomEvent('audioStateChange', { 

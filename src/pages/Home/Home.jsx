@@ -5,6 +5,7 @@ import SeletorCategoria from '../../components/SeletorCategoria';
 import CartaReflexao from '../../components/CartaReflexao';
 import Botao from '../../components/Botao';
 import MusicaControle from '../../components/MusicaControle';
+import Tutorial from '../../components/Tutorial/Tutorial'; // Importando o componente Tutorial
 import { useRoleta } from '../../hooks/useRoleta';
 import { MensagensContext } from '../../context/MensagensContext';
 import './Home.css';
@@ -15,6 +16,7 @@ const Home = () => {
   const navigate = useNavigate();
   const [currentPlayer, setCurrentPlayer] = useState(null);
   const [mostrarPolitica, setMostrarPolitica] = useState(false);
+  const [tutorialCompleto, setTutorialCompleto] = useState(false); // Estado para controlar o tutorial
 
   // Carregar dados do jogador e limpar carta apenas na montagem inicial
   useEffect(() => {
@@ -26,6 +28,12 @@ const Home = () => {
       // Limpar qualquer carta que possa estar selecionada de uma sessão anterior
       // Apenas na montagem inicial do componente
       limparCartaSelecionada();
+
+      // Verificar se o tutorial já foi mostrado
+      const showTutorial = localStorage.getItem('showTutorial');
+      if (showTutorial === 'false') {
+        setTutorialCompleto(true);
+      }
     } else {
       // Redirecionar para a tela inicial se não tiver jogador
       navigate('/');
@@ -40,8 +48,16 @@ const Home = () => {
     navigate('/');
   };
 
+  const handleTutorialComplete = () => {
+    setTutorialCompleto(true);
+  };
+
   return (
     <div className="home-container">
+      {!tutorialCompleto && (
+        <Tutorial onComplete={handleTutorialComplete} />
+      )}
+      
       <h1 className="app-title">Roleta de Reflexões</h1>
       
       <div className="nav-container">
@@ -91,6 +107,16 @@ const Home = () => {
         >
           Política de Privacidade
         </button>
+        <button 
+          className="politica-link tutorial-link"
+          onClick={() => {
+            // Resetar o tutorial e mostrar novamente
+            localStorage.setItem('showTutorial', 'true');
+            setTutorialCompleto(false);
+          }}
+        >
+          Ver Tutorial
+        </button>
       </div>
       
       {mostrarPolitica && (
@@ -124,22 +150,22 @@ const Home = () => {
                 no aplicativo e lembrar suas preferências entre sessões.
               </p>
               
-              <h3>Armazenamento de Dados</h3>
+              <h3>Armazenamento e Dados</h3>
               <p>
                 Todas as informações são armazenadas localmente no seu dispositivo. 
-                Não enviamos nenhuma de suas informações para servidores externos.
+                Não compartilhamos seus dados com terceiros.
               </p>
               
               <h3>Seus Direitos</h3>
               <p>
                 Você pode acessar, corrigir ou excluir seus dados a qualquer momento
-                nas configurações do aplicativo.
+                através da opção "Limpar todos os dados do perfil" nas configurações.
               </p>
               
               <h3>Contato</h3>
               <p>
                 Se você tiver dúvidas sobre esta Política de Privacidade, entre em contato 
-                pelo e-mail: [seu-email@exemplo.com]
+                pelo e-mail: alerson.rigo@gmail.com
               </p>
             </div>
           </div>

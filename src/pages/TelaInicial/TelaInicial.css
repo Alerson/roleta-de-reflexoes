@@ -103,7 +103,7 @@
 .input-container label {
   display: block;
   font-size: 1.1rem;
-  color: #4b5563;
+  color: #7e22ce;
   margin-bottom: 0.5rem;
 }
 
@@ -130,7 +130,7 @@
 
 .avatar-selection p {
   font-size: 1.1rem;
-  color: #4b5563;
+  color: #7e22ce;
   margin-bottom: 0.5rem;
 }
 
@@ -238,7 +238,6 @@
   font-weight: 600;
   color: #7e22ce;
   font-size: 1.1rem;
-  border-bottom: 2px solid #9333ea;
   padding-bottom: 4px;
   display: inline-block;
   margin: 0;

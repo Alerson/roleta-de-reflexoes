@@ -23,40 +23,27 @@ const Tutorial = ({ onComplete }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // Dependência vazia para executar apenas uma vez
 
-  // Etapas do tutorial
+  // Etapas do tutorial - removidas as posições diferentes para manter sempre centralizado
   const tutorialSteps = [
     {
       title: "Bem-vindo à Roleta de Reflexões!",
-      description: "Este aplicativo foi criado para fortalecer os laços familiares através de perguntas e reflexões.",
-      action: "Deslize para a próxima etapa →",
-      position: "center",
+      description: "Este aplicativo foi criado para fortalecer os laços familiares através de perguntas e reflexões."
     },
     {
       title: "Escolha uma Categoria",
-      description: "Selecione entre Família, Crianças ou Valores para diferentes tipos de perguntas.",
-      action: "Deslize para continuar →",
-      position: "top",
-      highlight: "seletor-categoria",
+      description: "Selecione entre Família, Crianças ou Valores para diferentes tipos de perguntas."
     },
     {
       title: "Gire a Roleta",
-      description: "Toque no botão para girar a roleta e receber uma pergunta aleatória.",
-      action: "Deslize para continuar →",
-      position: "middle",
-      highlight: "roleta-container",
+      description: "Toque no botão para girar a roleta e receber uma pergunta aleatória."
     },
     {
       title: "Reflita e Compartilhe",
-      description: "Discuta a pergunta selecionada com sua família para momentos de conexão significativa.",
-      action: "Deslize para continuar →",
-      position: "bottom",
-      highlight: "carta-reflexao",
+      description: "Discuta a pergunta selecionada com sua família para momentos de conexão significativa."
     },
     {
       title: "Pronto para Começar!",
-      description: "Agora você sabe como usar a Roleta de Reflexões. Divirta-se com sua família!",
-      action: "Começar a Jogar",
-      position: "center",
+      description: "Agora você sabe como usar a Roleta de Reflexões. Divirta-se com sua família!"
     },
   ];
 
@@ -84,18 +71,15 @@ const Tutorial = ({ onComplete }) => {
   if (!visible) return null;
 
   const currentTutorial = tutorialSteps[currentStep];
+  const isLastStep = currentStep === tutorialSteps.length - 1;
 
   return (
     <div className="tutorial-overlay" onClick={nextStep}>
-      {currentTutorial.highlight && (
-        <div className={`tutorial-highlight ${currentTutorial.highlight}`}></div>
-      )}
-      
-      <div className={`tutorial-card ${currentTutorial.position}`} onClick={(e) => e.stopPropagation()}>
+      <div className="tutorial-card" onClick={(e) => e.stopPropagation()}>
         <h3>{currentTutorial.title}</h3>
         <p>{currentTutorial.description}</p>
         <button className="tutorial-action" onClick={nextStep}>
-          {currentTutorial.action}
+          {isLastStep ? "Começar a Jogar" : "Próximo"}
         </button>
         
         <div className="tutorial-progress">
