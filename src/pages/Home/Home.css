@@ -9,6 +9,8 @@
   background-color: #f5f3ff;
   background-image: linear-gradient(to bottom, #f5f3ff, #ede9fe);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  position: relative; /* Adicionado para posicionamento absoluto das bolhas */
+  overflow: hidden; /* Adicionado para conter as bolhas */
 }
 
 /* Título do app */
@@ -19,6 +21,7 @@
   margin: 0.5rem 0 0.75rem 0;
   text-align: center;
   width: 100%;
+  z-index: 10; /* Garantir que o título esteja acima das bolhas */
 }
 
 /* Container de navegação */
@@ -29,6 +32,8 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 1rem;
+  position: relative; /* Garantir que fique acima das bolhas */
+  z-index: 10;
 }
 
 /* Divisão esquerda e direita da navegação */
@@ -109,6 +114,8 @@
   max-width: 1200px;
   margin-top: 0;
   flex-grow: 1;
+  position: relative; /* Garantir que esteja acima das bolhas */
+  z-index: 10;
 }
 
 .controles-area {
@@ -145,6 +152,8 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.5rem;
+  position: relative; /* Garantir que esteja acima das bolhas */
+  z-index: 10;
 }
 
 .politica-link {
@@ -246,6 +255,62 @@
   margin-bottom: 0.3rem;
 }
 
+/* Bolhas decorativas (adicionadas da TelaInicial) */
+.decoracao-bolhas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bolha {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: float 15s ease-in-out infinite;
+}
+
+.bolha1 {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(to right, #9333ea, transparent);
+  top: -100px;
+  left: -100px;
+}
+
+.bolha2 {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(to left, #db2777, transparent);
+  bottom: -50px;
+  right: -50px;
+  animation-delay: 2s;
+  animation-duration: 18s;
+}
+
+.bolha3 {
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(to bottom, #8b5cf6, transparent);
+  top: 60%;
+  left: 10%;
+  animation-delay: 1s;
+  animation-duration: 12s;
+}
+
+.bolha4 {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(to top, #d8b4fe, transparent);
+  top: 20%;
+  right: 10%;
+  animation-delay: 3s;
+  animation-duration: 10s;
+}
+
 /* Animações */
 @keyframes fadeIn {
   from {
@@ -264,6 +329,18 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  100% {
+    transform: translateY(0) translateX(0);
   }
 }
 
@@ -450,29 +527,4 @@
   font-size: 1.2rem;
   font-weight: 500;
   z-index: 2000;
-}
-
-/* Adicione esta classe ao arquivo Home.css */
-
-.resultado-area {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  margin-top: 1.5rem !important; /* Aumentando a margem superior para afastar do botão */
-  animation: fadeIn 0.5s ease-out;
-}
-
-/* Para dispositivos móveis, aumentando ainda mais a margem */
-@media (max-width: 768px) {
-  .resultado-area {
-    margin-top: 2rem !important;
-  }
-}
-
-/* Se estiverem lado a lado em dispositivos maiores, ajuste a margem à esquerda */
-@media (min-width: 768px) {
-  .jogo-area.has-result .resultado-area {
-    margin-left: 1rem;
-  }
 }

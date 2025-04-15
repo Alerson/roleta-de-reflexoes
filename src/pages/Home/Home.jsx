@@ -54,6 +54,14 @@ const Home = () => {
 
   return (
     <div className="home-container">
+      {/* Adicionando bolhas decorativas como na TelaInicial */}
+      <div className="decoracao-bolhas">
+        <div className="bolha bolha1"></div>
+        <div className="bolha bolha2"></div>
+        <div className="bolha bolha3"></div>
+        <div className="bolha bolha4"></div>
+      </div>
+      
       {!tutorialCompleto && (
         <Tutorial onComplete={handleTutorialComplete} />
       )}
