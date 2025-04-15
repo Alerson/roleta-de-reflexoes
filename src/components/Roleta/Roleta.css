@@ -10,35 +10,9 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: linear-gradient(to right, #8b5cf6, #ec4899);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  /* Removido o box-shadow que causava o sombreamento */
   position: relative;
   z-index: 2;
-}
-
-.roleta-centro {
-  width: 75%;
-  height: 75%;
-  border-radius: 50%;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 1rem;
-  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.roleta-centro span {
-  color: #7e22ce;
-  font-weight: 500;
-  font-size: 1rem;
-  max-width: 80%;
-  display: inline-block;
-  transform: rotate(-45deg);
 }
 
 .indicador {
@@ -51,9 +25,10 @@
   background-color: #fcd34d;
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   z-index: 3;
+  /* Removido o filter drop-shadow do indicador também */
 }
 
-/* Para um indicador mais visível se necessário */
+/* Para um indicador mais visível */
 .indicador::after {
   content: "";
   position: absolute;
@@ -77,10 +52,6 @@
     width: 2.2rem;
     height: 2.2rem;
   }
-  
-  .roleta-centro span {
-    font-size: 1.2rem;
-  }
 }
 
 @media (min-width: 1024px) {
@@ -92,10 +63,6 @@
   .indicador {
     width: 2.5rem;
     height: 2.5rem;
-  }
-  
-  .roleta-centro span {
-    font-size: 1.3rem;
   }
 }
 
@@ -110,10 +77,6 @@
   .indicador {
     width: 1.5rem;
     height: 1.5rem;
-  }
-  
-  .roleta-centro span {
-    font-size: 0.9rem;
   }
 }
 
