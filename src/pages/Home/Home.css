@@ -451,3 +451,28 @@
   font-weight: 500;
   z-index: 2000;
 }
+
+/* Adicione esta classe ao arquivo Home.css */
+
+.resultado-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 1.5rem !important; /* Aumentando a margem superior para afastar do botão */
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Para dispositivos móveis, aumentando ainda mais a margem */
+@media (max-width: 768px) {
+  .resultado-area {
+    margin-top: 2rem !important;
+  }
+}
+
+/* Se estiverem lado a lado em dispositivos maiores, ajuste a margem à esquerda */
+@media (min-width: 768px) {
+  .jogo-area.has-result .resultado-area {
+    margin-left: 1rem;
+  }
+}

@@ -11,6 +11,10 @@
   transition: transform 0.2s ease;
   margin-bottom: 1rem;
   font-size: 1rem;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  position: relative;
+  overflow: hidden;
 }
 
 .botao:hover:not(:disabled) {
@@ -24,6 +28,7 @@
 .botao:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  background: linear-gradient(to right, #a890e0, #e9a5be);
 }
 
 /* Media queries para tablets e desktops */
