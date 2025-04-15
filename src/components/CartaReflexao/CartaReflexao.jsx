@@ -1,8 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { MensagensContext } from '../../context/MensagensContext';
 import './CartaReflexao.css';
 
 const CartaReflexao = ({ mensagem }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const { categoriaAtual } = useContext(MensagensContext);
+  
+  // Determinar o título com base na categoria atual
+  const getTitulo = () => {
+    if (categoriaAtual === 'motivacao') {
+      return "Mensagem motivacional";
+    }
+    return "Reflexão";
+  };
   
   // Efeito para ativar a animação quando o componente é montado
   useEffect(() => {
@@ -21,7 +31,7 @@ const CartaReflexao = ({ mensagem }) => {
     <div className="carta-container">
       {isVisible && <div className="brilho"></div>}
       <div className="carta-reflexao">
-        <h2>Reflexão</h2>
+        <h2>{getTitulo()}</h2>
         <p>{mensagem}</p>
       </div>
     </div>

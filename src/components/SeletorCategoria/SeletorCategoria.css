@@ -19,6 +19,9 @@
   background-color: rgba(255, 255, 255, 0.5);
   color: #6b7280;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 .categoria-botao:hover {
@@ -37,6 +40,13 @@
   box-shadow: 0 2px 5px rgba(147, 51, 234, 0.3);
 }
 
+.icone-categoria {
+  font-size: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Media queries para tablets e desktops */
 @media (min-width: 768px) {
   .seletor-categoria {
@@ -47,6 +57,10 @@
   .categoria-botao {
     padding: 0.6rem 1.2rem;
     font-size: 1rem;
+  }
+  
+  .icone-categoria {
+    font-size: 1.2rem;
   }
 }
 
@@ -60,6 +74,10 @@
     padding: 0.7rem 1.4rem;
     font-size: 1.05rem;
   }
+  
+  .icone-categoria {
+    font-size: 1.3rem;
+  }
 }
 
 /* Para dispositivos muito pequenos */
@@ -72,5 +90,9 @@
   .categoria-botao {
     padding: 0.45rem 0.9rem;
     font-size: 0.85rem;
+  }
+  
+  .icone-categoria {
+    font-size: 1rem;
   }
 }
