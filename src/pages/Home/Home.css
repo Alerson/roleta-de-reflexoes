@@ -528,3 +528,88 @@
   font-weight: 500;
   z-index: 2000;
 }
+
+/* Adicione estes estilos ao arquivo Home.css */
+
+/* Botão do diário */
+.botao-diario {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: linear-gradient(to right, #7e22ce, #9333ea);
+  border: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-right: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.botao-diario:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.botao-diario:active {
+  transform: scale(0.95);
+}
+
+.diario-icon {
+  font-size: 1.2rem;
+}
+
+/* Animação de pulso para o botão do diário quando há reflexões novas */
+.botao-diario.tem-novas {
+  animation: pulse 2s infinite;
+  position: relative;
+}
+
+.botao-diario.tem-novas::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 10px;
+  height: 10px;
+  background-color: #ef4444;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+/* Media queries para responsividade */
+@media (min-width: 768px) {
+  .botao-diario {
+    width: 38px;
+    height: 38px;
+  }
+  
+  .diario-icon {
+    font-size: 1.3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .botao-diario {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .diario-icon {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .botao-diario {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .diario-icon {
+    font-size: 1.1rem;
+  }
+}

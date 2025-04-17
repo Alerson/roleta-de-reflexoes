@@ -1,0 +1,10 @@
+/* Estilos para o elemento modal-root */
+#modal-root {
+    position: relative;
+    z-index: 9999; /* Garante que os modais neste contêiner apareçam acima de tudo */
+  }
+  
+  /* Reset para elementos dentro do modal-root */
+  #modal-root * {
+    box-sizing: border-box;
+  }

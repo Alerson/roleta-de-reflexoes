@@ -318,3 +318,89 @@
     transform: translateX(0);
   }
 }
+
+/* Adicione estes estilos ao final do arquivo CartaReflexao.css */
+
+/* Botão para salvar no diário */
+.salvar-diario-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: #7e22ce;
+  border: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(126, 34, 206, 0.4);
+  z-index: 5;
+  opacity: 0;
+  animation: diarioEntrada 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 1s;
+}
+
+.salvar-diario-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(126, 34, 206, 0.5);
+  background-color: #9333ea;
+}
+
+.salvar-diario-button:active {
+  transform: scale(0.95);
+}
+
+.salvar-diario-icon {
+  font-size: 1.1rem;
+}
+
+/* Animação de entrada para o botão de diário */
+@keyframes diarioEntrada {
+  0% {
+    opacity: 0;
+    transform: scale(0) translateY(10px);
+  }
+  70% {
+    transform: scale(1.1) translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Responsividade para o botão de diário */
+@media (max-width: 480px) {
+  .salvar-diario-button {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    bottom: 8px;
+    right: 8px;
+  }
+  
+  .salvar-diario-text {
+    display: none; /* Ocultar texto em telas muito pequenas */
+  }
+  
+  .salvar-diario-button {
+    width: auto;
+    border-radius: 50%;
+    padding: 8px;
+  }
+}
+
+/* Ajuste para a carta quando existem botões */
+.carta-reflexao {
+  padding-bottom: 45px; /* Espaço para o botão */
+}
+
+@media (min-width: 768px) {
+  .salvar-diario-text {
+    display: inline; /* Mostrar texto em telas maiores */
+  }
+}
