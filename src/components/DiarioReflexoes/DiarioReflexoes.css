@@ -1,0 +1,279 @@
+.diario-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 0.5rem;
+    background-color: #f5f3ff;
+    background-image: linear-gradient(to bottom, #f5f3ff, #ede9fe);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .diario-title {
+    font-size: clamp(1.3rem, 5vw, 2rem);
+    font-weight: 700;
+    color: #7e22ce;
+    margin: 0.5rem 0 0.75rem 0;
+    text-align: center;
+    width: 100%;
+    z-index: 10;
+  }
+  
+  .diario-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 800px;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    z-index: 10;
+  }
+  
+  .sem-reflexoes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .sem-reflexoes p {
+    color: #4b5563;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+  
+  .lista-reflexoes {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+  }
+  
+  .reflexao-card {
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    position: relative;
+    transition: transform 0.2s ease;
+    border-left: 5px solid #8b5cf6;
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  .reflexao-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .reflexao-data {
+    font-size: 0.8rem;
+    color: #6b7280;
+    margin-bottom: 0.5rem;
+  }
+  
+  .reflexao-categoria {
+    font-size: 0.9rem;
+    color: #4b5563;
+    margin-bottom: 0.75rem;
+  }
+  
+  .categoria-tag {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.25rem;
+    font-weight: 500;
+    font-size: 0.8rem;
+    margin-left: 0.25rem;
+  }
+  
+  .categoria-tag.familia {
+    background-color: #e0f2fe;
+    color: #0369a1;
+  }
+  
+  .categoria-tag.criancas {
+    background-color: #fef3c7;
+    color: #92400e;
+  }
+  
+  .categoria-tag.valores {
+    background-color: #dcfce7;
+    color: #166534;
+  }
+  
+  .categoria-tag.motivacao {
+    background-color: #fce7f3;
+    color: #9d174d;
+  }
+  
+  .reflexao-pergunta {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #7e22ce;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+  }
+  
+  .reflexao-resposta {
+    font-size: 1rem;
+    color: #1f2937;
+    line-height: 1.6;
+    white-space: pre-wrap;
+  }
+  
+  .excluir-reflexao {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: #f3f4f6;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #6b7280;
+  }
+  
+  .excluir-reflexao:hover {
+    background-color: #fee2e2;
+    color: #dc2626;
+  }
+  
+  .icone-excluir {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  /* Modal de confirmação */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .modal-confirm {
+    background-color: white;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    width: 90%;
+    max-width: 400px;
+    animation: scaleUp 0.3s ease-out;
+  }
+  
+  .modal-confirm h3 {
+    color: #7e22ce;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+  
+  .modal-confirm p {
+    color: #4b5563;
+    margin-bottom: 1.5rem;
+  }
+  
+  .modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+  
+  .cancel-button, .confirm-button {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .cancel-button {
+    background-color: #f3f4f6;
+    color: #4b5563;
+    border: 1px solid #d1d5db;
+  }
+  
+  .cancel-button:hover {
+    background-color: #e5e7eb;
+  }
+  
+  .confirm-button {
+    background-color: #ef4444;
+    color: white;
+    border: none;
+  }
+  
+  .confirm-button:hover {
+    background-color: #dc2626;
+  }
+  
+  @keyframes scaleUp {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .reflexao-card {
+      padding: 1.25rem;
+    }
+    
+    .reflexao-pergunta {
+      font-size: 1rem;
+    }
+    
+    .reflexao-resposta {
+      font-size: 0.95rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .diario-content {
+      padding: 0 0.5rem;
+    }
+    
+    .reflexao-card {
+      padding: 1rem;
+    }
+    
+    .excluir-reflexao {
+      width: 1.75rem;
+      height: 1.75rem;
+      top: 0.75rem;
+      right: 0.75rem;
+    }
+  }

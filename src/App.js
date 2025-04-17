@@ -3,9 +3,11 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { MensagensProvider } from './context/MensagensContext';
 import Home from './pages/Home/Home';
 import TelaInicial from './pages/TelaInicial/TelaInicial';
+import DiarioReflexoes from './components/DiarioReflexoes';
 import ConsentimentoPrivacidade from './components/ConsentimentoPrivacidade/ConsentimentoPrivacidade';
 import audioService from './services/AudioService';
 import './styles/global.css';
+import './styles/modal-root.css';
 
 // Verificação condicional para capacitor
 const CapApp = typeof window !== 'undefined' && window.Capacitor ? 
@@ -83,6 +85,7 @@ function App() {
             <Routes>
               <Route path="/" element={<TelaInicial />} />
               <Route path="/jogo" element={<Home />} />
+              <Route path="/diario" element={<DiarioReflexoes />} />
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </div>

@@ -1,10 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { MensagensContext } from '../../context/MensagensContext';
+import FormularioReflexao from '../FormularioReflexao/FormularioReflexao';
 import './CartaReflexao.css';
 
 const CartaReflexao = ({ mensagem }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
+  const [showFormulario, setShowFormulario] = useState(false);
   const { categoriaAtual } = useContext(MensagensContext);
   
   // Determinar o título com base na categoria atual
@@ -45,6 +47,11 @@ const CartaReflexao = ({ mensagem }) => {
     window.open(url, '_blank');
   };
 
+  // Função para abrir o formulário de reflexão
+  const abrirFormulario = () => {
+    setShowFormulario(true);
+  };
+
   return (
     <div className="carta-container">
       {isVisible && <div className="brilho"></div>}
@@ -69,9 +76,25 @@ const CartaReflexao = ({ mensagem }) => {
             )}
           </>
         )}
+        
         <h2>{getTitulo()}</h2>
         <p>{mensagem}</p>
+
+        {/* Novo botão para salvar no diário */}
+        <button
+          className="salvar-diario-button"
+          onClick={abrirFormulario}
+          title="Salvar no diário de reflexões"
+        >
+          <span className="salvar-diario-icon">📔</span>
+          <span className="salvar-diario-text">Registrar no Diário</span>
+        </button>
       </div>
+
+      {/* Formulário para salvar reflexão */}
+      {showFormulario && (
+        <FormularioReflexao onClose={() => setShowFormulario(false)} />
+      )}
     </div>
   );
 };

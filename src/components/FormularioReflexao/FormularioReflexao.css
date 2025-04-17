@@ -1,0 +1,185 @@
+.formulario-reflexao-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999; /* Valor de z-index muito alto para garantir que fique no topo */
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  .formulario-reflexao {
+    background-color: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.3s ease-out;
+  }
+  
+  .fechar-formulario {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: #f3f4f6;
+    border: none;
+    font-size: 1.5rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #6b7280;
+    transition: all 0.2s ease;
+  }
+  
+  .fechar-formulario:hover {
+    background-color: #fee2e2;
+    color: #dc2626;
+  }
+  
+  .formulario-reflexao h2 {
+    color: #7e22ce;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  .pergunta-container {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: #f3f4f6;
+    border-radius: 0.5rem;
+    border-left: 4px solid #7e22ce;
+  }
+  
+  .label-pergunta {
+    font-weight: 600;
+    color: #4b5563;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .texto-pergunta {
+    font-size: 1.1rem;
+    color: #1f2937;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+  
+  .resposta-container {
+    margin-bottom: 1.5rem;
+  }
+  
+  .label-resposta {
+    display: block;
+    font-weight: 600;
+    color: #4b5563;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .campo-resposta {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 0.5rem;
+    font-family: inherit;
+    font-size: 1rem;
+    resize: vertical;
+    transition: border-color 0.2s;
+    min-height: 120px;
+  }
+  
+  .campo-resposta:focus {
+    outline: none;
+    border-color: #9333ea;
+    box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.3);
+  }
+  
+  .campo-resposta::placeholder {
+    color: #9ca3af;
+  }
+  
+  .mensagem-erro {
+    color: #dc2626;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  
+  .mensagem-sucesso {
+    background-color: #dcfce7;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    text-align: center;
+    color: #166534;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  .botoes-formulario {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+  
+  .botoes-formulario button {
+    padding: 0.75rem 1.5rem;
+  }
+  
+  .botoes-formulario button:last-child {
+    background: linear-gradient(to right, #9333ea, #7e22ce);
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .formulario-reflexao {
+      padding: 1.5rem;
+    }
+    
+    .formulario-reflexao h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .botoes-formulario {
+      flex-direction: column-reverse;
+      gap: 0.5rem;
+    }
+    
+    .botoes-formulario button {
+      width: 100%;
+    }
+  }

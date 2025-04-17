@@ -5,7 +5,7 @@ import SeletorCategoria from '../../components/SeletorCategoria';
 import CartaReflexao from '../../components/CartaReflexao';
 import Botao from '../../components/Botao';
 import MusicaControle from '../../components/MusicaControle';
-import Tutorial from '../../components/Tutorial/Tutorial'; // Importando o componente Tutorial
+import Tutorial from '../../components/Tutorial/Tutorial';
 import { useRoleta } from '../../hooks/useRoleta';
 import { MensagensContext } from '../../context/MensagensContext';
 import './Home.css';
@@ -16,7 +16,7 @@ const Home = () => {
   const navigate = useNavigate();
   const [currentPlayer, setCurrentPlayer] = useState(null);
   const [mostrarPolitica, setMostrarPolitica] = useState(false);
-  const [tutorialCompleto, setTutorialCompleto] = useState(false); // Estado para controlar o tutorial
+  const [tutorialCompleto, setTutorialCompleto] = useState(false);
 
   // Carregar dados do jogador e limpar carta apenas na montagem inicial
   useEffect(() => {
@@ -39,13 +39,16 @@ const Home = () => {
       navigate('/');
       return;
     }
-    // Remova limparCartaSelecionada das dependências para evitar re-execução
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigate]);
 
   const voltarInicio = () => {
     limparCartaSelecionada();
     navigate('/');
+  };
+
+  const navegarParaDiario = () => {
+    navigate('/diario');
   };
 
   const handleTutorialComplete = () => {
@@ -76,7 +79,16 @@ const Home = () => {
         </div>
         
         <div className="nav-right">
-          {/* Controle de música adicionado aqui */}
+          {/* Novo botão para o diário */}
+          <button
+            className="botao-diario"
+            onClick={navegarParaDiario}
+            title="Meu Diário de Reflexões"
+          >
+            <span className="diario-icon">📔</span>
+          </button>
+          
+          {/* Controle de música */}
           <MusicaControle />
           
           {currentPlayer && (
@@ -149,6 +161,7 @@ const Home = () => {
                   <li>Preferências de categoria</li>
                   <li>Histórico de uso do aplicativo</li>
                   <li>Preferências de música (ativada/desativada)</li>
+                  <li>Reflexões salvas no diário</li>
                 </ul>
               </p>
               
